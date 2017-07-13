@@ -1,0 +1,62 @@
+午前中の勉強会用コマンドリスト
+
+#ROSのインストール
+$ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list‘
+$ wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
+$ sudo apt-get update
+$ sudo apt-get install ros-indigo-desktop-full 
+$ sudo rosdep init 
+$ rosdep update 
+$ echo "source /opt/ros/indigo/setup.bash" >> ~/.bashrc 
+$ source ~/.bashrc 
+$ sudo apt-get install python-rosinstall 
+
+#ROS入門
+$ roscore
+$ rosrun turtlesim turtlesim_node
+$ rosrun turtlesim turtle_teleop_key
+$ rqt_graph
+$ rosnode list
+$ rostopic list
+$ rostopic type /turtle1/cmd_vel
+$ rosmsg show geometry_msgs/Twist
+$rostopic echo /turtle1/cmd_vel
+$rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -- '[2.0,0.0,0.0]' '[0.0,0.0,0.0]'
+
+$roscore
+ターミナル移動
+$ rosrun turtlesim turtlesim_node
+ターミナル移動
+$rosrun turtlesim turtlesim_node __name:=my_turtle
+ターミナル移動
+$rosrun turtlesim turtle_teleop_key
+ターミナル移動
+$rqt_graph
+
+#ワークスペース作成
+$ mkdir –p ~/catkin_ws/src
+$ cd ~/catkin_ws/src
+$ catkin_init_workspace
+$ cd ../
+$catkin_make
+$ echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc 
+$ source ~/.bashrc 
+
+#gazebo
+$cd ~/catkin_ws/src/turtle_war
+$./start.sh
+
+#Launchファイル
+$cd ~/catkin_ws/src/turtle_war/launch
+$mv yourBot.launch yourBot.launch.bak
+ros_study/launch/yourBot.launchを~/catkin_ws/src/turtle_war/launch以下にコピー
+$cd ~/catkin_ws/src/turtle_war/
+$./start.sh
+
+変更修正
+$cd ~/catkin_ws/src/turtle_war/launch
+$mv yourBot.launch.bak yourBot.launch
+$rm yourBot.launch.bak
+
+
+
